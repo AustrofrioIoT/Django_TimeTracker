@@ -1,0 +1,104 @@
+{% extends 'bases/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="employee-dash my-timecard">
+    <div class="container employee-dash-wrap">
+<!--        <div class="row">-->
+<!--            <div class="col-12 text-center">-->
+<!--                <h1 class="mt-0 mb-4 mb-md-4 mb-xl-5">Your Timesheet</h1>-->
+<!--            </div>-->
+<!--        </div>-->
+
+        <div class="row">
+            <div class="col-12 col-md-8 col-lg-6 m-auto pt-3 pt-md-3 pt-lg-4 pt-xl-5 your-time-notices text-center">
+            </div>
+        </div>
+
+        <!-- Sheet table -->
+        <div class="row">
+            <div class="col-12">
+                <div class="rounded bg-white shadow-sm">
+                    <form method="post" >
+                        {% csrf_token %}
+                        <div class="card card-default">
+                            <div class="card-header">
+                                <h4 class="card-title">
+                                    <i class="fa fa-plus"></i>
+                                    {{ title }}
+                                </h4>
+                            </div>
+                            <div class="card-body">
+                                {% if form.errors %}
+                                    <div class="alert alert-danger alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                                        <h6><i class="icon fa fa-ban"></i> Ha sucedido un error al guardar el Evento</h6>
+                                        <ul>
+                                            {% for field in form %}
+                                                {% for error in field.errors %}
+<!--                                                    <li>{{error}}</li>-->
+                                                {% endfor %}
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                {% endif %}
+                                    <tr><td>  Nombre </td><td>&nbsp;</td>
+                                         <td>{{ form.first_name }}</td>
+                                    </tr>
+                                    <tr><td>  Apellido </td><td>&nbsp;</td>
+                                         <td>{{ form.last_name }}</td>
+                                    </tr>
+                                    <tr><td>  Correo Electronico  </td><td>&nbsp;</td>
+                                        <td>{{ form.email }}</td>
+                                    </tr>
+                                     <tr><td>  Direccion  </td><td>&nbsp;</td>
+                                        <td>{{ form.direction }}</td>
+                                    </tr>
+                                    <tr><td>  Pais  </td><td>&nbsp;</td>
+                                        <td>{{ form.country }}</td>
+                                    </tr>
+                                    <tr><td>  Provincia  </td><td>&nbsp;</td>
+                                        <td>{{ form.province }}</td>
+                                    </tr>
+                                    <tr><td>  Telefono </td><td>&nbsp;</td>
+                                        <td>{{ form.telephone }}</td>
+                                    </tr>
+                                    <tr><td>  Avatar </td><td>&nbsp;</td>
+                                        <td>{{ form.avatar }}</td>
+                                    </tr>
+                                    <tr><td>  Contraseña </td><td>&nbsp;</td>
+                                        <td>{{ form.password1 }}</td>
+                                    </tr>
+                                    <tr><td>  Repita la Contraseña  </td><td>&nbsp;</td>
+                                        <td>{{ form.password2 }}</td>
+                                    </tr>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary btn-flat">
+                                    <i class="fa fa-save"></i> Guardar Registro
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <script>
+                        {% if form.errors %}
+                            var errors='';
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    errors+= '{{error}}\n';
+                                {% endfor %}
+                            {% endfor %}
+                                    Swal.fire({
+                                      icon: 'error',
+                                      title: 'Oops...',
+                                      text: errors,
+                                    });
+                        {% endif %}
+                  </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

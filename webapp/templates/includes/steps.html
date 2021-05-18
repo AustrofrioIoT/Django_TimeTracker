@@ -1,0 +1,53 @@
+{% load static %}
+<div id="steps" class="emp-punch-wrap text-center col-sm-12 col-lg-10 col-xl-7 m-auto">
+    <div class="emp-punch-wrap-2 bg-white rounded shadow-sm">
+        <div class="punch-in-box">
+            <!-- <span class="small-top-title date">
+                <span id="FechaActual"></span>
+            </span>
+            <h2 class="time mt-0 mb-0 pb-4">
+                <div id="HoraActual" class="clock"></div>
+            </h2> -->
+            <div >
+                <button type="button" id="{% if event_today is None %}start{%else%}{{event_today.id}}{%endif%}" value="1"
+                    data-flag="{{event_today.is_finished}}"
+                    data-url="{% url 'webapp:punch_task' %}" name="start"
+                    class="step  btn btn-lg btn-primary punch-in punchbtn">Start Shift
+                </button>
+                <button type="button" id="{% if firstbreak_today is None %}firstbreak{%else%}{{firstbreak_today.id}}{%endif%}" value="2"
+                    data-flag="{{firstbreak_today.is_finished}}"
+                    data-url="{% url 'webapp:punch_task' %}" name="first"
+                    class="step  btn btn-lg btn-primary punch-in punchbtn">First Break
+                </button>
+                <button type="button" id="{% if lunch_today is None %}lunch{%else%}{{lunch_today.id}}{%endif%}" value="3"
+                    data-flag="{{lunch_today.is_finished}}"
+                    data-url="{% url 'webapp:punch_task' %}" name="lunch"
+                    class="step  btn btn-lg btn-primary punch-in punchbtn">Lunch
+                </button>
+                <button type="button" id="{% if secondbreak_today is None %}secondbreak{%else%}{{secondbreak_today.id}}{%endif%}" value="4"
+                    data-flag="{{secondbreak_today.is_finished}}"
+                    data-url="{% url 'webapp:punch_task' %}" name="second"
+                    class="step  btn btn-lg btn-primary punch-in punchbtn">Second Break
+                </button>
+                <button type="button" id="{% if event_today is None %}end{%else%}{{event_today.id}}{%endif%}" value="1" 
+                    data-flag="{{event_today.is_finished}}"
+                    data-url="{% url 'webapp:punch_task' %}" name="end"
+                    class="step endbtn  btn btn-lg btn-primary punch-in punchbtn">End Shift
+                </button>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center mt-2">
+                <button type="button" id="{% if afk_today is None %}afk{%else%}{{afk_today.id}}{%endif%}" value="5"
+                    data-flag="{{afk_today.is_finished}}"
+                    data-url="{% url 'webapp:afk_task' %}" name="afk"
+                    class="afkbtn btn btn-primary btn-lg punch-in punchbtn">AFK
+                </button>
+                <button type="button" id="skip" value="skip" name="skip"
+                    data-url="{% url 'webapp:skip_task' %}"
+                    class="skipbtn btn btn-primary btn-lg punch-in punchbtn">Skip
+                </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

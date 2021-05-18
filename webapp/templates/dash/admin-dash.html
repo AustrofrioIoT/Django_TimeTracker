@@ -1,0 +1,122 @@
+{% extends 'bases/base.html' %}
+{% load static %}
+
+{% block extra_css %}{% endblock%}
+
+{% block content %}
+
+<div class="container">
+    <div class="row jobProjectCosting mt-3 mt-lg-4">
+        <div class="col-12 col-lg-4">
+            <div class="p-3 p-xl-4 shadow-sm bg-white rounded">
+                <div class="job-title d-flex align-items-center mb-2 mb-xl-3 ">
+                    <h4 class="mt-0 mb-0 p-3 px-lg-4 d-flex align-items-center justify-content-between">
+                        Last in/out records
+                    </h4>
+                </div>
+                <div id="whos-in-dash-list" class="shadow-sm bg-white rounded">
+                    <div class="border-top border-bottom">
+                        <table class="table table-sm mb-0">
+                            <thead class="lstHead thead-light">
+                                <tr id="">
+                                    <th scope="col" >User</th>
+                                    <th scope="col" >Event</th>
+                                	<th scope="col" >Status</th>
+                                	<th scope="col" >Duration</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for event in events_today %}
+                                    <tr class="lstNormalItem">
+                                        <td class="pl-3 pl-lg-4" style="word-break: break-all;">
+                                            {% ifchanged %}{{event.owner.user}}{%endifchanged%}
+                                        </td>
+                                        <td style="text-align: left;">{% ifchanged %}{{event.event.name}}{%endifchanged%}</td>
+                                        <td style="text-align: left;">
+                                           {% ifchanged %} {{ event.is_finished|yesno:'out, in' }}{%endifchanged%}
+                                        </td>
+                                        <td style="text-align: left;">{{event.time}}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>  
+                    </div>
+                    <a href="{% url 'webapp:admin-whois' %}" class="d-block px-3 px-lg-4 py-2 py-xl-3 rounded-bottom border-top">View all records</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-4">
+            <div class="p-3 p-xl-4 shadow-sm bg-white rounded">
+                <div class="job-title d-flex align-items-center mb-2 mb-xl-3 ">
+                    <h4 class="mt-0 mb-0 p-3 px-lg-4 d-flex align-items-center justify-content-between">
+                        Employees
+                    </h4>
+                </div>
+                <div id="whos-in-dash-list" class="shadow-sm bg-white rounded">
+                    <div class="border-top border-bottom">
+                        <table class="table table-sm mb-0">
+                            <tbody>
+                                {% for emp in employees %}
+                                    <tr class="lstNormalItem">
+                                        <td class="pl-3 pl-lg-4" style="word-break: break-all;">
+                                            {{emp.user}}
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'webapp:admin-employee-update' emp.user.id %}" 
+                                            class="btn btn-primary p-0 rounded-circle border-0">
+                                                <i class="fa fa-pen" style="width: 25px; height: 25px; line-height: 23px; font-size: 0.75em"></i>
+                                            </a>
+                                            <a href="{% url 'webapp:admin-employee-delete' emp.id %}" 
+                                            class="ml-1 btn btn-danger p-0 rounded-circle border-0">
+                                                <i class="fas fa-trash-alt" style="width: 25px; height: 25px; line-height: 23px; font-size: 0.8em"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>  
+                    </div>
+                    <a href="{% url 'webapp:admin-employees' %}" class="d-block px-3 px-lg-4 py-2 py-xl-3 rounded-bottom border-top">View all employees</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-4">
+            <div class="p-3 p-xl-4 shadow-sm bg-white rounded">
+                <div class="job-title d-flex align-items-center mb-2 mb-xl-3 ">
+                    <h4 class="mt-0 mb-0 p-3 px-lg-4 d-flex align-items-center justify-content-between">
+                        Managers
+                    </h4>
+                </div>
+                <div id="whos-in-dash-list" class="shadow-sm bg-white rounded">
+                    <div class="border-top border-bottom">
+                        <table class="table table-sm mb-0">
+                            <tbody>
+                                {% for emp in managers %}
+                                    <tr class="lstNormalItem">
+                                        <td class="pl-3 pl-lg-4" style="word-break: break-all;">
+                                            {{emp.user}}
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'webapp:admin-employee-update' emp.user.id %}" 
+                                            class="btn btn-primary p-0 rounded-circle border-0">
+                                                <i class="fa fa-pen" style="width: 25px; height: 25px; line-height: 23px; font-size: 0.75em"></i>
+                                            </a>
+                                            <a href="{% url 'webapp:admin-employee-delete' emp.id %}" 
+                                            class="ml-1 btn btn-danger p-0 rounded-circle border-0">
+                                                <i class="fas fa-trash-alt" style="width: 25px; height: 25px; line-height: 23px; font-size: 0.8em"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>  
+                    </div>
+                    <a href="{% url 'webapp:admin-managers' %}" class="d-block px-3 px-lg-4 py-2 py-xl-3 rounded-bottom border-top">View all managers</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

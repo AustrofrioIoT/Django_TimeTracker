@@ -1,0 +1,41 @@
+{% extends 'bases/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="employee-dash my-timecard">
+    <div class="container employee-dash-wrap">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="mt-0 mb-4 mb-md-4 mb-xl-5">Your Timesheet</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-8 col-lg-6 m-auto pt-3 pt-md-3 pt-lg-4 pt-xl-5 your-time-notices text-center">
+            </div>
+        </div>
+
+             <form method="post" >
+                 {% csrf_token %}
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-plus"></i>
+                                {{ title }}
+                            </h3>
+                        </div>
+                            <div class="card-body">
+                                {{ form.as_p }}
+                <!--                <input type="submit" value="Update">-->
+                            <div class="card-footer">
+                            <button type="submit" class="btn btn-primary btn-flat">
+                                <i class="fas fa-save"></i> Guardar Registro
+                            </button>
+                        </div>
+                        </div>
+
+                    </div>
+             </form>
+        </div>
+</div>
+{% endblock content %}

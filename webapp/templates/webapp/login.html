@@ -1,0 +1,55 @@
+{% extends 'bases/base.html' %}
+
+{% block title %} Login • Logger21 {% endblock %} 
+
+{% block content %}
+<div class="employee-dash">
+    <div class="container employee-dash-wrap">
+        <div class="row rounded align-items-center" id="empLogin">
+            <div class="col-12 col-lg-6 m-auto">
+                <div id="empLoginForm" class="shadow-sm bg-white rounded">
+                    <div class="p-3 p-md-3 p-lg-4 p-xl-5">
+
+                    	<form method="post" action="" class="">
+                    		{% csrf_token %}
+	                        <div class="flexForm">
+	                            <h2 class="mt-0 text-center">Greetings!</h2>
+	                            <p class="lead mb-3 mb-md-3 mb-lg-4 mb-xl-5 text-center">Please login to your employee account.</p>
+	                            <div class="form-group">
+	                                <label for="">Email</label>
+	                                <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username" class="inp100Percent form-control inpValFail">
+	                            </div>
+
+	                            <div class="form-group">
+	                                <label for="">Password</label>
+	                                <input type="password" name="password" autocomplete="current-password" required id="id_password" class="inp100Percent form-control inpValFail">
+	                            </div>
+
+	                            <div class="form-group row pt-0 pt-md-3 pt-lg-4 pb-3 pb-md-3 pb-lg-4 mb-0 mb-md-3">
+	                                <div class="col-6">
+	                                    <span class="custom-control custom-checkbox">
+	                                        <input id="checkRemember" type="checkbox" class="custom-control-input"/>
+	                                        <label for="" class="custom-control-label">Remember Me</label>
+	                                    </span>
+	                                </div>
+	                                <div class="col-6 text-right">
+	                                    <a id="" href="">Lost Password?</a>
+	                                </div>
+	                            </div>
+
+	                            <div class="text-center d-block emp-login-btns">
+	                            	<input type="submit" name="" value="Login" id="inputLogin" class="btn btn-lg btn-primary mb-0 mt-lg-0"/>
+	                            </div>
+	                        </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6 m-auto empMarketWrap d-none">
+            </div>
+        </div>
+    </div><!-- end container -->
+</div><!-- end employee-dash -->
+{% endblock content %}

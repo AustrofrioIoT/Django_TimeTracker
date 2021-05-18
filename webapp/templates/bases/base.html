@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta name="apple-mobile-web-app-title" content="Logger21">
+    <meta name="application-name" content="Logger21">
+    <meta name="msapplication-TileColor" content="#bd793c">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Employee Time Tracking. Easy to use.">
+    <link rel="icon" type="image/png" href="{% static 'webapp/img/favicon.png' %}" sizes="64x64">
+
+    <title>{% block title %}Employee Time Clock Online • Logger21{% endblock title %}</title>
+
+    <!-- <link rel="stylesheet" href="{% static  'webapp/css/lyd2wbl.css' %}"/> -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static  'webapp/css/jquery-ui.min.css' %}"/>
+    <link rel="stylesheet" href="{% static  'webapp/css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static  'webapp/css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static  'webapp/css/home.css' %}"/>
+
+    <!--Sweet Alert 2-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <!--    TimePicker-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <!-- Font Awesome Free 5.15.3 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+</head>
+
+<body class="bg-lt-gray">
+
+    {% include 'includes/header.html' %}
+
+    <div id="main">
+        <div class="main-wrap padding-20">
+            <!-- content -->
+            {% block content %}{% endblock content %}
+        </div><!-- end main wrap -->
+    </div><!-- end #main -->
+    
+    {% include 'includes/footer.html' %}
+
+    <!-- arrow To Top -->
+    <a href="#" id="back-to-top" title="Back To Top" class="">
+        <i class="fas fa-arrow-up" style="font-size: 1.5em;"></i>
+    </a><!-- end arrow To Top -->
+
+    <script type="text/javascript" src="{% static 'webapp/js/jquery_3.3.1.js' %}"></script>
+    <script type="text/javascript" src="{% static 'webapp/js/jquery-ui.js' %}"></script>
+    <script type="text/javascript" src="{% static 'webapp/js/jquery.ui.touch.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'webapp/js/popper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'webapp/js/bootstrap.js' %}"></script>
+    <!-- <script type="text/javascript" src="{% static 'webapp/js/punch.js' %}"></script> -->
+    <script type="text/javascript" src="{% static 'webapp/js/scripts.js' %}"></script>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

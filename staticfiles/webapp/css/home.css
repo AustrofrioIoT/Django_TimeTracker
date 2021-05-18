@@ -1,0 +1,37 @@
+.user-avatar {
+    width: 50%;
+    border-radius: 50%;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.all-steps {
+    text-align: center;
+    width: 100%;
+    display: inline-flex;
+    justify-content: center
+}
+
+.step {
+    height: 70px;
+    width: 70px;
+    margin: 0 2px;
+    border: none;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    padding: 0rem 0rem;
+    white-space: normal;
+    line-height: normal;
+}
+
+.step.active {
+    opacity: 1
+}
+
+.step-finish {
+    color: #fff;
+    background: #394154;
+    opacity: 1
+}

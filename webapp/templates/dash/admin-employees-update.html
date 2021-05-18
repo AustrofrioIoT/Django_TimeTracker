@@ -1,0 +1,141 @@
+{% extends 'bases/base.html' %}
+{% load static %}
+{% block content %}
+{{form.media}}
+
+<div class="container">
+	<div class="row">
+        <div class="col-12 text-center">
+            <h1 class="mt-0">Update Employee Info</h1>
+        </div>
+    </div>
+
+	<form id="myform" method="post" action="" enctype="multipart/form-data">
+	    {% csrf_token %}
+<!--	    {{ form.non_field_errors }}-->
+<!--			{% for field in form %}-->
+<!--				<div class="fieldWrapper">-->
+<!--					{{ field.errors }}-->
+<!--				</div>-->
+<!--			{% endfor %}-->
+<!--			{% if form.subject.errors %}-->
+<!--				<ol>-->
+<!--				{% for error in form.subject.errors %}-->
+<!--					<li><strong>{{ error|escape }}</strong></li>-->
+<!--				{% endfor %}-->
+<!--				</ol>-->
+<!--			{% endif %}-->
+
+    	<div class="row">
+	        <div class="col-12">
+	            <div class="rounded shadow-sm bg-white">
+	                <div class="row p-3 p-lg-4">
+	                    <div class="col-12 col-md-6 ">
+	                        <div class="p-3 p-lg-4 rounded border ">
+	                            <h4 class="mb-3 mb-lg-4">Personal Info</h4>
+	                            <div class="form-group row">
+	                                <label class="col-lg-4 col-form-label mb-2 mb-lg-0">
+	                                First Name</label>
+	                                <div class="col-lg-8">
+	                                    {{form.user.first_name}}
+	                                </div>
+	                            </div>
+	                            <div class="form-group row">
+	                                <label class="col-lg-4 col-form-label mb-2 mb-lg-0">
+	                                Last Name</label>
+	                                <div class="col-lg-8">{{form.user.last_name}}</div>
+	                            </div>
+	                            <div class="form-group row">
+	                                <label class="col-lg-4 col-form-label mb-2 mb-lg-0">
+	                                Direction</label>
+	                                <div class="col-lg-8">{{form.user.direction}}</div>
+	                            </div>
+	                            <div class="form-group row">
+	                                <label class="col-lg-4 col-form-label mb-2 mb-lg-0">
+	                                Province</label>
+	                                <div class="col-lg-8">{{form.user.province}}</div>
+	                            </div>
+	                            <div class="form-group row">
+	                                <label class="col-lg-4 col-form-label mb-2 mb-lg-0">
+	                                Country</label>
+	                                <div class="col-lg-8">{{form.user.country}}</div>
+	                            </div>
+	                            <div class="row mb-1">
+	                                <label class="col-lg-4 col-form-label mb-2 mb-lg-0">
+	                                Telephone</label>
+	                                <div class="col-lg-8">{{form.user.telephone}}</div>
+	                            </div>
+	                            <div class="row mb-1">
+	                                <label class="col-lg-4 col-form-label mb-2 mb-lg-0">
+	                                Avatar</label>
+	                                <div class="col-lg-8">{{form.user.avatar}}</div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="col-12 col-md-6 mt-3 mt-md-0">
+	                        <div class="p-3 p-lg-4 rounded border">
+	                            <h4 class="mb-3 mb-lg-4">Employee Options</h4>
+	                            <div class="form-group row">
+	                                <label class="col-lg-4 col-form-label mb-2 mb-lg-0">
+	                                Type of Employee</label>
+	                                <div class="col-lg-8">{{form.employee.type_of_employee}}</div>
+	                            </div>
+	                            <div class="form-group row">
+	                                <label class="col-lg-4 col-form-label mb-2 mb-lg-0">
+	                                Department</label>
+	                                <div class="col-lg-8">{{form.employee.department}}</div>
+	                            </div>
+	                            <div class="form-group row">
+	                                <label class="col-lg-4 col-form-label mb-2 mb-lg-0">
+	                                Role</label>
+	                                <div class="col-lg-8">{{form.employee.role}}</div>
+	                            </div>
+	                            <div class="form-group row">
+	                                <label class="col-lg-4 col-form-label mb-2 mb-lg-0">
+	                                Date hired</label>
+	                                <div class="col-lg-8">{{form.employee.date_hired}}</div>
+	                            </div>
+	                            <div class="form-group row">
+	                                <label class="col-lg-4 col-form-label mb-2 mb-lg-0">
+	                                Observations</label>
+	                                <div class="col-lg-8">{{form.employee.observations}}</div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="row">
+                        <div class="col-12 text-center mt-2 mb-lg-4">
+                            <a onclick="document.getElementById('myform').submit()" class="btn btn-lg btn-primary">Save</a>
+                            <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-lg btn-danger">Cancel</a>
+                        </div>
+                    </div>
+	            </div>
+	        </div>
+    	</div>
+	</form>
+</div>
+
+{% endblock content %}
+{% block extra_js %}
+<script>
+	{% if form.errors %}
+		var errors = '';
+		{% for field in form %}
+			{% for error in field.errors %}
+				errors += '{{error}}\n';
+			{% endfor %}
+		{% endfor %}
+		{% for error in form.non_field_errors %}
+			errors += '{{error}}\n';
+		{% endfor %}
+
+		Swal.fire({
+			icon: 'error',
+			title: 'Oops...',
+			text: errors,
+			footer: '<a href>If the field is not created visit Settings Option!</a>'
+		});
+	{% endif %}
+
+</script>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'bases/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+{% endblock%}
+
+{% block content %}
+<label id="aux" data-url=""></label>
+
+<div id="dash" class="employee-dash ">
+    <div class="container employee-dash-wrap">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="mt-0">
+                    <span id="">Hello {{ user }}</span>
+                </h1>
+                <div id="">
+                    <p class="lead small-top-title mb-3 mb-md-3 mb-lg-4 mb-xl-5 pb-2 pb-md-4 pb-lg-2 pb-xl-2 d-flex align-items-center justify-content-center">
+                        <span id="" class="d-none d-sm-inline-block">Current State</span>
+                        <label class="badge-pill px-5 px-sm-3 px-lg-4 py-4 py-sm-2 ml-0 
+                            ml-sm-2 mb-0 text-uppercase 
+                            {% if event_today is None %}
+                                badge-punched-out
+                            {% else %}
+                                {{ event_today.is_finished|yesno:'badge-punched-out, badge-punched-in' }}
+                            {% endif %}">
+                            <span id="event_state" class="font-w-800">
+                                {% if event_today is None %} End
+                                {% else %}
+                                    {{ event_today.is_finished|yesno:"End, Start" }}
+                                {% endif %}
+                            </span>
+                        </label>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="emp-punch" class="emp-punch row">
+            {% include 'includes/steps.html' %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
+    
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'webapp/js/punch.js' %}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'bases/base.html' %}
+{% load static %}
+
+{% block extra_css %}{% endblock%}
+
+{% block content %}
+
+<div class="employee-dash my-timecard">
+    <div class="container employee-dash-wrap">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="mt-0 mb-4 mb-md-4 mb-xl-5">Employees List</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="empSearch" class="col-12 col-sm-6 col-lg-4 ml-auto">
+	            <div id="tblEmployeeList_filter" class="dataTables_filter">
+<!--	            	<input type="search" class="form-control bg-white" placeholder="Search Employees...">-->
+	            </div>
+        	</div>
+
+            <div class="col-12 col-sm-6 col-lg-6 text-center text-sm-right mr-auto">
+                <a class="btn btn-md btn-primary alt-white mt-3 mt-sm-0 alt-flip" href="{% url 'webapp:admin-employee-create' %}" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-user-plus"></i> Add Employee
+                </a>
+            </div>
+        </div>
+
+        <!-- Sheet table -->
+        <div class="row mt-3 mt-lg-4">
+            <div class="col-12">
+                <div class="rounded bg-white shadow-sm">
+                    <div class="table-responsive">
+                        <table class="lstContainer table table-borderless" id="lstTimeCards">
+                            <thead class="lstHead thead-light">
+                                <tr id="">
+                                    <th scope="col" >Id</th>
+                                	<th scope="col" >Full Name</th>
+                                    <th scope="col" >Type</th>
+                                	<th scope="col" >Role</th>
+                                	<th scope="col" >Department</th>
+                                    <th scope="col" >Date Hired</th>
+                                    <th scope="col" >Options</th>
+                                </tr>
+                            </thead>
+                        
+                            <tbody class="lstNormalItem">
+                             {% csrf_token %}
+                                {% for item in employee_list %}
+                                <tr id="">
+                                    <td>{{ item.id}}</td>
+                                    <td>{{ item.user }}</td>
+                                    <td>{{ item.type_of_employee }}</td>
+                                    <td>{{ item.role }}</td>
+                                    <td>{{ item.department }}</td>
+                                    <td>{{ item.date_hired }}</td>
+                                    <td>
+                                        <a href="{% url 'webapp:admin-employee-update' item.user.id %}" class="btn btn-primary p-0 rounded-circle border-0">
+                                            <i class="fa fa-pen" style="width: 25px; height: 25px; line-height: 23px; font-size: 0.75em"></i>
+                                        </a>
+                                        <a href="{% url 'webapp:admin-employee-delete' item.id %}" class="ml-1 btn btn-danger p-0 rounded-circle border-0">
+                                            <i class="fas fa-trash-alt" style="width: 25px; height: 25px; line-height: 23px; font-size: 0.8em"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% endblock content %}

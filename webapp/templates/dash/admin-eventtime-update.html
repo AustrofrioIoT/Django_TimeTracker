@@ -1,0 +1,65 @@
+{% extends 'bases/base.html' %}
+{% load static %}
+
+{% block content %}
+{{form.media}}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-lg-10 col-xl-7 m-auto text-center">
+            <h1 class="my-3 my-lg-4 py-2">EventTime Update</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-10 col-xl-7 m-auto">
+			<form id="myform" method="post" >
+	            {% csrf_token %}
+	            <div class="form shadow-sm bg-white rounded p-3 p-lg-4">
+	                <div class="form-group row mt-3">
+	                    <div class="col-12 col-sm-7">
+	                        <label class="mb-2">Event Time</label>
+								<div >
+									<a>{{ form.event }}</a>
+								</div>
+	                    </div>
+	                    <div class="col-12 col-sm-5 mt-3 mt-sm-0">
+	                        <label>Event Owner</label>
+	                        {{ form.owner }}
+	                    </div>
+	                </div>
+					<div class="form-group row">
+	                    <label  class="col-sm-3 col-form-label mb-2 mb-sm-0">Start DateTime</label>
+	                    <div class="col-sm-9">
+	                        {{ form.start_datetime }}
+	                    </div>
+	                </div>
+	                <div class="form-group row">
+	                    <label class="col-sm-3 col-form-label mb-2 mb-sm-0">End DateTime</label>
+	                    <div class="col-sm-9">
+	                        {{ form.end_datetime }}
+	                    </div>
+	                </div>
+	                <div class="form-group row">
+	                    <label for="" class="col-sm-3 col-form-label mb-2 mb-sm-0">Is Finished</label>
+	                    <div class="col-sm-9">
+	                        {{ form.is_finished }}
+	                    </div>
+	                </div>
+	                <div class="row">
+	                    <div class="col-12 text-center mt-2">
+	                        <button type="submit" class="btn btn-primary btn-flat">
+                                    <i class="fa fa-save"></i> Save
+                            </button>
+							<a href="{{ list_url }}" class="btn btn-secondary btn-flat">
+								<i class="fas fa-undo"></i> Return
+							</a>
+	                    </div>
+	                </div>
+	            </div>
+	        </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

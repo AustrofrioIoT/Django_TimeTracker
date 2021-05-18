@@ -1,0 +1,130 @@
+
+:root{
+	--line-border-fill: #9c27b0;
+	--line-border-empty: #A9A9A9;
+}
+
+*{
+	box-sizing: border-box;
+}
+
+.body-step{
+	background-color: #ffffff;
+	font-family: 'Raleway', sans-serif;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	overflow: hidden;
+	margin: 0;
+}
+
+.fab{
+	padding: 0px 10px;
+}
+.fa-html5{
+	font-size: 1.8rem;
+	color: #F24805;
+}
+.fa-css3-alt{
+	font-size: 1.8rem;
+	color: #3453EE;
+}
+.fa-js{
+	font-size: 1.8rem;
+	color: #F9C40B;
+}
+.fa-react{
+	font-size: 1.8rem;
+	color: #1270B1;
+}
+.fa-angular{
+	font-size: 1.8rem;
+	color: #CA0505;
+}
+
+.container-step {
+	text-align: center;
+}
+
+.progress-container{
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	margin-bottom: 30px;
+	max-width: 100%;
+	/*width: 350px;*/
+}
+.progress-container-2{
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	margin-bottom: 30px;
+	max-width: 100%;
+	/*width: 350px;*/
+}
+
+.progress-container::before{
+	content: "";
+	background-color: var(--line-border-empty);
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	height: 4px;
+	width: 100%;
+	z-index: 99;
+	transition: 0.4s ease;
+}
+
+.progress-step{
+	background-color: var(--line-border-fill);
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	height: 4px;
+	width: 0%;
+	z-index: 99;
+	transition: 0.4s ease;
+}
+
+.circle{
+	background-color: #fff;
+	color: #999;
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+	border: 3px solid #b2bec3;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: 0.4s ease;
+	z-index: 100;
+}
+
+.circle.active{
+	border-color: var(--line-border-fill);
+}
+
+.btn-step{
+	background-color: var(--line-border-fill);
+	color: #ffff;
+	border-radius: 6px;
+	border: pointer;
+	font-family: inherit;
+	padding: 8px 30px;
+	margin: 5px;
+	font-size: 14px;
+}
+
+.btn-step:focus{
+	outline: 0;
+}
+.btn-step.active{
+	transform: scale(0.97);
+}
+.btn-step.disabled{
+	background-color: var(--line-border-empty);
+	cursor: unset;
+}

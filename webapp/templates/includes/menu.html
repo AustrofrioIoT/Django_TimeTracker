@@ -1,0 +1,43 @@
+{% load static %}
+
+<div class="offcanvas-collapse navbar-collapse" id="navigation">
+    <ul class="navbar-nav m-auto">
+
+        <li id="ctl00_liPunch" class="nav-item">
+            <a id="lnkPunch" class="nav-link d-flex align-items-baseline flex-row flex-lg-column flex-xl-row py-3 py-md-3 py-lg-0 px-0 px-md-0 px-lg-3 px-xl-6" title="Clock in/out" href="{% url 'webapp:home' %}">
+            <i class="fa fa-fingerprint" style="font-size: 1em; padding-right: 5px"></i>
+                Clock In/Out
+            </a>
+        </li>
+        
+        <li id="ctl00_liTimeCards" class="nav-item">
+            <a id="lnkTimeCard" class="nav-link d-flex align-items-baseline flex-row flex-lg-column flex-xl-row py-3 py-md-3 py-lg-0 px-0 px-md-0 px-lg-3 px-xl-6" title="Timesheet" 
+            href="{% url 'webapp:sheets' %}">
+            <i class="fa fa-tasks" style="font-size: 1em; padding-right: 5px"></i>
+                My Timesheet
+            </a>
+        </li>
+
+    </ul>
+
+    <div id="ctl00_pnlUserAccount">
+        
+        <div class="dropdown d-flex align-items-center">
+            <div class="d-none d-lg-none d-xl-inline-block"><span class="teal-text">Hi,&nbsp;</span>{{request.user}}</div>
+            <img class="user-avatar user-dropdown-btn dropdown-toggle ml-2 btn pill btn-primary btn-sm" data-toggle="dropdown" alt="user" src="{{request.user.get_avatar}}"/>
+
+            <div class="user-dropdown dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                <ul class="m-0 p-0">
+                    <li>
+                        <div class="user-name d-none d-lg-none d-xl-inline-block"><span class="teal-text">Hi,&nbsp;</span>{{request.user}}</div>
+                    </li>
+                    <li id="ctl00_liSignOff">
+                        <a id="lnkSignOff" class="btn btn-sm btn-outline-primary mt-3 d-block" title="Logout from OnTheClock" href="{% url 'webapp:logout' %}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <ul class="m-0 p-0 group-punch-btn">
+    </ul>
+</div>

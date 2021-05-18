@@ -1,0 +1,37 @@
+{% extends 'bases/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="employee-dash my-timecard">
+    <div class="container employee-dash-wrap">
+
+        <!-- Sheet table -->
+        <div class="row">
+            <div class="col-12">
+                <div class="rounded bg-white shadow-sm">
+                    <form method="post" >
+                        {% csrf_token %}
+                        <div class="card card-default">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    {{ title }}
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                {{ form }}
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary btn-flat">
+                                    <i class="fas fa-save"></i> Guardar Registro
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+

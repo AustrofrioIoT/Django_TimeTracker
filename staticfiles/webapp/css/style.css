@@ -1,0 +1,423 @@
+﻿.loader-page {
+    position: fixed;
+    z-index: 25000;
+    background: rgb(255, 255, 255);
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:all .3s ease;
+  }
+  .loader-page::before {
+    content: "";
+    position: absolute;
+    border: 2px solid rgb(50, 150, 176);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border-left: 2px solid rgba(50, 150, 176,0);
+    border-top: 2px solid rgba(50, 150, 176,0);
+    animation: rotarload 1s linear infinite;
+    transform: rotate(0deg);
+  }
+  @keyframes rotarload {
+      0%   {transform: rotate(0deg)}
+      100% {transform: rotate(360deg)}
+  }
+  .loader-page::after {
+    content: "";
+    position: absolute;
+    border: 2px solid rgba(50, 150, 176,.5);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border-left: 2px solid rgba(50, 150, 176, 0);
+    border-top: 2px solid rgba(50, 150, 176, 0);
+    animation: rotarload 1s ease-out infinite;
+    transform: rotate(0deg);
+  }
+  
+/* ---------------------
+------------------------
+
+Additional Styles for OnTheClock website
+
+------------------------
+--------------------- */
+/* Text Colors */
+.orange-text{color:#FBA507}
+.lt-orange-text {color:#ffba4c}
+.red-text {color: #c95136}
+.teal-text{color:#70c4be}
+.black-text {color:#8b8b8b}
+.gray-text {color:#8b8b8b}
+.lt-green-text {color: #5cd3b2}
+/* Font Weights */
+.font-w-500{font-weight:500}
+.font-w-800{font-weight:700}
+.font-w-801{font-weight:800}
+/* Extra Paddings */
+.padding-lr-100{padding:0 160px}
+.padding-120 {padding:120px 0}
+.padding-100 {padding:100px 0}
+.padding-60 {padding:60px 0}
+.padding-20 {padding:20px 0}
+/* Background Colors */
+.lt-orange-bg {background-color:#ffba4c}
+.otc-copper-bg {background-color:#FBA507}
+.green-bg {background-color:#43937d}
+.lt-blue-bg {background-color:#54c2f0}
+.lt-lt-blue-bg {background-color: #eef9fd}
+.lt-gradient {background: rgb(242,228,216);background:-webkit-linear-gradient(-45deg, #fbf7f3 0%, rgba(255,255,255,1) 100%);background: -o-linear-gradient(-45deg, #fbf7f3 0%, rgba(255,255,255,1) 100%);background: linear-gradient(-45deg, #fbf7f3 0%, rgba(255,255,255,1) 100%)}
+.table .thead-light th:first-child {border-radius: 10px 0 0 0}
+.table .thead-light th:last-child {border-radius: 0 10px 0 0}
+
+/* Re-Styled Inputs and Lists */
+.val ul li {text-align:left}
+.valSummary ul, #ctl00_cphBody_ValidationSummary1 ul {margin:0;padding:0;list-style:none}
+.val-text-summary{display:inline-block;color:#c95136!important}
+.val-ast{color:#c95136!important}
+
+
+#dialog-confirm{display:none;vertical-align:middle;align-items:center}
+#dialog-confirm-image{background-repeat:no-repeat}
+#jsPopUpMessage{position:fixed;top:29%;z-index:999;left:0;right:0;text-align:center;margin:0 auto;border-radius:.4rem;padding:20px;font-size:22px;font-weight:500;min-width:285px;line-height:1.5;max-width:810px}
+#jsPopUpMessageCloseButton{opacity:1;transition:all .1s linear}
+#jsPopUpMessageCloseButton:hover,#jsPopUpMessageCloseButton:focus,#jsPopUpMessageCloseButton:active{opacity:.7}
+
+
+
+/* ---------------------
+    
+    Header 
+
+--------------------- */
+nav.main-navigation {padding:1.8rem 2rem;transition:all 0.3s ease}
+.navbar-brand img {max-width: 210px}
+.dropdown .user-name {max-width: 208px;overflow: hidden;text-overflow: ellipsis;white-space:nowrap}
+
+/* Nav item text color and svg color */
+.nav-item svg path{fill:#8b8b8b}
+.nav-item .nav-link:hover svg path{fill:#8b8b8b}
+.nav-item .nav-link:focus svg path {fill:#8b8b8b}
+.nav-item.active .nav-link{color:#E2B139!important}
+.nav-item.active svg path{fill:#E2B139}
+.nav-item.active .nav-link:hover svg path {fill:#8b8b8b}
+.nav-item.active .nav-link:focus svg path {fill:#E2B139}
+.nav-item.active .nav-link:hover{color:#8b8b8b!important}
+.nav-item.active .nav-link:focus {color:#E2B139!important}
+
+/* Navigation Dropdown */
+.dropdown-toggle::after{display:none}
+header .user-dropdown{min-width:inherit}
+header .user-dropdown ul,.group-punch-btn{list-style:none}
+header .main-navigation .user-dropdown-btn.dropdown-toggle{width:40px;height:40px;text-align:center;line-height:37px;padding:0;font-weight:400}
+#lnkGroupPunchStation svg {top:3px;position:relative}
+
+/*  Hamburger Icon effect  */
+.main-navigation .navbar-toggler span{width:22px;height:4px;position:relative;display:block;margin-bottom:3px;background-color:#8b8b8b;border-radius:3px;transition:all .2s linear;top:0}
+.main-navigation .navbar-toggler .line-3{margin-bottom:0}
+.main-navigation .navbar-toggler:hover span{background-color:#5c5252}
+.main-navigation .navbar-toggler:active span{background-color:#8b8b8b}
+.main-navigation .navbar-toggler.open .line-2{opacity:0}
+.main-navigation .navbar-toggler.open .line-1{transform:rotate(45deg);top:8px;background-color:#8b8b8b}
+.main-navigation .navbar-toggler.open .line-3{transform:rotate(-45deg);top:-6px;background-color:#8b8b8b}
+
+/* Header Shrink */
+.header-shrink .header-wrap{box-shadow:0 0 16px 0 rgba(0,0,0,0.06)}
+.header-shrink .secondary-header-wrap{margin-top:10px}
+.header-shrink nav.main-navigation{padding-top:10px;padding-bottom:10px}
+
+#main {margin-top:110px}
+
+
+/* ---------------------
+    
+    Home Footer
+
+--------------------- */
+footer a{color:#8b8b8b}
+.pre-footer-wrap{padding:80px 0}
+.pre-footer-wrap .item-text span{font-size:.87rem}
+.available-on{border-bottom:1px solid #ddd}
+.footer-navigation ul{margin:0;padding:0;list-style:none}
+.footer-navigation ul li a{display:inline-block;padding:5px 0;line-height:1.3rem}
+.social-btns a {border:2px solid #70c4be;width:50px;height:50px;border-radius:50%;line-height:41px;text-align:center}
+.social-btns a:hover {border-color:#64afaa}
+.copyright{color:#8b8b8b}
+.footer-extras ul{list-style:none;padding:0;margin:0}
+.footer-extras ul li{display:inline-block}
+.footer-extras ul li a{padding:0 10px}
+.footer-contact-list li address {margin-bottom:0}
+.social-btns a svg {width: 17px;text-align: center;margin: 0px auto;}
+.social-btns a svg path, .social-btns a svg rect {fill:#70c4be;transition:fill 0.3s ease;}
+.social-btns .google-plus:hover svg path {fill:#de5347}
+.social-btns .linkedin:hover svg path, .social-btns .linkedin:hover svg rect{fill:#0274b3}
+.social-btns .twitter:hover svg path{fill:#55adee}
+.social-btns .facebook:hover svg path{fill:#3c599b}
+.social-btns .youtube:hover svg path{fill:red}
+.social-btns .mail:hover svg path {fill:#E2B139}
+#back-to-top {position: fixed;opacity:0; bottom: -65px;right: 30px;width: 65px;height: 65px;background-color: #fff;border-radius: 50%;text-align: center;line-height: 73px;z-index:999;box-shadow:0 4px 5px 0 rgba(0,0,0,0.08);transition:all 0.5s ease;}
+#back-to-top svg {transform: rotate(180deg);transition:top .3s ease;top:0;position:relative}
+#back-to-top.visible {bottom:30px;opacity:1}
+#back-to-top:hover {box-shadow:0 10px 10px 0 rgba(0,0,0,0.1)}
+#back-to-top:active {background-color:#f3f3f3}
+#back-to-top:hover svg {top:-5px}
+#back-to-top:hover svg path {fill:#8b8b8b}
+.made-with-love svg {width:14px}
+
+/* ---------------------
+    
+    Employee Dashboard
+
+--------------------- */
+.punch-in-box {padding: 60px 30px}
+.punch-btn {padding: 1rem 5.5rem;font-size: 1.43rem}
+.dash .form-inline ul {list-style: none;margin: 0;padding: 0}
+#ctl00_cphBody_lblPunchStatus {font-size: 16px}
+
+.success-icon{background-color:#5cd3b2;border-radius:50%;width:105px;height:105px;position:relative;display:inline-block;line-height:105px}
+.success-icon img{width:46px;margin:0 auto}
+#ctl00_cphBody_lblAutoPunchOutStatus{border-radius:50px;background-color:#54c2f0;padding:15px 45px 15px 70px;position:relative;background-image:url(../AppImages/info-excl.svg);background-repeat:no-repeat;background-position:40px center;background-size:22px;color:#fff;font-size:18px;display:inline-block}
+.your-time-notices span{display:inline-block}
+span#ctl00_cphBody_lblAutoPunchOutStatus:empty, span#ctl00_cphBody_lblTimeCardEditingMessage:empty, span#ctl00_cphBody_lblMessage:empty, span#spanLocationAccuracyHelp:empty, .emp-login .col-12.col-lg-6.m-auto:empty, #ctl00_cphBody_lblCompanyName:empty {display:none!important}
+.detailed-info-wrap{padding:10px 25px 15px}
+.my-timecard #lstPunchLog tr{background-color:transparent;border-bottom:1px solid #eee}
+.detailed-info #lstPunchLog{background-color:transparent}
+.my-timecard #lstPunchLog tr td{padding:.35rem 1.5rem;font-size:14px;color:#a7a7a7}
+.time-card-in{color:#5cd3b2!important;font-weight:600}
+.time-card-out{color:#c95136!important;font-weight:600}
+
+.edit-icon{width:25px;height:25px;background-color:#E2B139;border-radius:50%;padding:7px;transition:background-color .3s ease}
+.edit-icon:hover{background-color:#D89809}
+.delete-icon{width:25px;height:25px;background-color:#c95136;border-radius:50%;padding:7px;transition:background-color .3s ease}
+.delete-icon:hover{background-color:#bd2130}
+#ctl00_cphBody_butSave{background-image:url(../AppImages/check-46.svg);background-repeat:no-repeat;background-position:24px 15px;background-size:12px;padding-left:45px}
+#ctl00_cphBody_butSave.btn-lg{background-position:41px 23px;background-size:16px;padding-left:66px}
+#ctl00_cphBody_butDelete{background-image:url(../AppImages/delete.svg);background-repeat:no-repeat;background-position:24px 13px;background-size:12px;padding-left:45px}
+#ctl00_cphBody_butDelete.btn-lg{background-position:39px 20px;background-size:16px;padding-left:62px}
+#ctl00_cphBody_butCancel{background-image:url(../AppImages/x.svg);background-repeat:no-repeat;background-position:17px 13px;background-size:12px;padding-left:38px}
+#ctl00_cphBody_butCancel.btn-lg{background-position:40px 21px;background-size:15px;padding-left:64px}
+#hoursOptionButton svg path{fill:#54c2f0;transition:all .3s ease}
+#hoursOptionButton:hover > svg path{fill:#fff}
+#hoursOptionButton svg{position:relative;top:2px;margin-right:4px}
+#ctl00_cphBody_butPDF{background-image:url(../AppImages/print-pdf-btn.svg);background-repeat:no-repeat;background-position:40px 21px;background-size:16px;padding-left:69px}
+.detailed-info .red-dot{width:10px;height:10px;background-color:#c95136;display:inline-block;margin-right:5px;border-radius:50%}
+.detailed-info .green-dot{width:10px;height:10px;background-color:#5cd3b2;display:inline-block;margin-right:5px;border-radius:50%}
+.detailed-entries{width:25%;max-width:25%}
+#ctl00_cphBody_butAddHours{background-image:url(../AppImages/add-plus.svg);background-repeat:no-repeat;background-position:40px 21px;background-size:16px;padding-left:69px}
+
+#lstTimeCards .lstAlternatingItem{background-color:#f6f6f6}
+table tfoot{background-color:#c6e7e5;font-weight:600;color:#8b8b8b}
+table tfoot tr td{padding:1.5rem!important}
+#lstTimeCards tbody:hover > tr{background-color:#fcfcfc;cursor:pointer}
+#lstTimeCards tbody:hover > tr table#lstPunchLog,#lstTimeCards tbody:hover > tr table#lstPunchLog tr{background-color:#fcfcfc}
+#lstTimeCards tbody:hover > tr table#lstPunchLog tr{border-color:#e0e0e0}
+
+#ctl00_cphBody_butFilter{border-radius:50px;display:inline-block;border:1px solid #ddd;background-color:#fff}
+.ck-button input{display:none}
+.ck-button label{font-weight:500;margin-bottom:0;padding:.75rem 2.5rem;border-radius:50px;color:#70c4be;cursor:pointer;font-size:1.13rem;line-height:1.9}
+input[type=radio]:checked + label{background-color:#E2B139;color:#fff}
+input[type="radio"]#ctl00_cphBody_butFilter_1:checked + label{border-radius:0 50px 50px 0}
+input[type="radio"]#ctl00_cphBody_butFilter_0:checked + label{border-radius:50px 0 0 50px}
+#ctl00_cphBody_pnlAdminLogin{display:inline-block}
+.emp-login-marketing{list-style:none;padding:0;margin-top:30px}
+.emp-login-marketing img{width:15px;height:11px;position:relative;display:inline-block;margin-top:-2px}
+#ctl00_cphBody_ValidationSummary1 ul li{margin:10px 0}
+.employee-login-img{max-width:100%}
+.pto-requests-tr td{border:0}
+#lstPTORequests tbody{border:0}
+#lstPTORequests .lstAlternatingItem{background-color:#fcfcfc}
+.spanPTOLabel img{width:15px}
+.notes-block{font-size:.85rem}
+.spanPTOLabel{font-weight:600}
+.trScheduleViewHeader th{border:0!important;border-radius:0!important}
+#ctl00_cphBody_pnlSchedules .desktopBlock {z-index: 1;position: relative}
+
+
+/* ---------------------
+    
+    IE 9 and lower alert
+
+--------------------- */
+.alert.outdated {z-index:99999;border-radius:0;}
+.browser-compatibility-icons img {width: 55px;margin: 0 10px}
+.outdated button.close svg line {stroke: #8b8b8b}
+.outdated button.close {height: 50px;width: 50px;right:20px;top:20px;padding:0;opacity: 1;font-size: 33px;border-radius: 50%;background-color: #fff}
+.outdated button.close:hover,.outdated button.close:active {background-color:#fff}
+.outdated button.close:hover svg line{stroke:#70c4be}
+
+
+/* ---------------------
+    
+    Target IE 10 & 11 
+
+--------------------- */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .modal-dialog-centered {height:100%}
+}
+
+
+/* ---------------------
+    
+    Media Queries 
+
+--------------------- */
+@media screen and (max-width:1725px) {
+}
+
+@media screen and (max-width:1479px) {
+    .display-4{font-size:3.3rem;font-weight:700;line-height:1.2}
+    .padding-lr-100{padding:0 50px}
+    /* Employee Dashboard */
+    .table th,.table td{padding:1rem;vertical-align:middle}
+    table tfoot tr td,.table thead tr td{padding:1.5rem 1rem!important}
+    .user-name {display:none!important}
+}
+
+@media screen and (max-width:1280px) {
+}
+
+@media screen and (max-width:1199px) {
+    h1,.h1{font-size:2.7rem}
+    h6,.h6{font-size:1rem;font-weight:400}
+    .lead{font-size:1.1rem;font-weight:400}
+    .display-4{font-size:2.5rem}
+    .padding-120, .padding-100 {padding:80px 0}
+    .available-apple{width:30px}
+    .available-play{width:32px}
+    .available-mobile{width:23px}
+    .available-tablet{width:32px}
+    .available-browser{width:36px}
+    /* Employee Dashboard */
+    .punch-btn {padding: 1.3rem 4.8rem!important}
+    .emp-login .p-5{padding:20px 10px!important}
+    #ctl00_cphBody_pnlMarketing{margin-top:50px}
+    .employee-dash-nav-btns li a{border:0;padding:.4rem .5rem;margin:0!important;font-size:.9rem}
+    .employee-dash-nav-btns li a:hover{background-color:transparent;color:#8b8b8b;border-color:transparent}
+    .employee-dash-nav-btns li a:focus,.employee-dash-nav-btns li a.focus{box-shadow:none}
+    .employee-dash-nav-btns li a:hover svg path,.employee-dash-nav-btns li a:hover svg ellipse{fill:#8b8b8b!important}
+    .btn-outline-primary:not(:disabled):not(.disabled):active{color:#E2B139;background-color:transparent;border-color:transparent}
+    .detailed-info-wrap{padding:0 20px 10px!important}
+    .mobile-date{border-radius:10px 0 0 0}
+}
+
+@media screen and (max-width:991px) {
+    /*  Defaults CSS  */
+    h1,.h1{font-size:2.2rem;line-height:2.2rem}
+    h2,.h2{font-size:1.8rem}
+    .padding-120, .padding-100 {padding:60px 0}
+    /*  Get rid of some things  */
+    .intro p.lead br,.dropdown-menu h6,.dropdown-divider,.dropdown-menu.meet-us::before,.dropdown-menu.show::before, nav .cta-btns, .owl-testimonials .owl-nav{display:none}
+    /*  Begin Specific Layout items  */
+    .available-on{padding-top:25px!important}
+    .available-on .col.mobile-split{flex:0 50%;margin-bottom:40px}
+    .available-on .item-wrap{justify-content:center}
+    .footer-navigation .col.mobile-split{flex:0 50%;margin-bottom:40px}
+    .footer-navigation .col{max-width:50%;width:50%;margin-bottom:40px}
+    /* Employee Dashboard */
+    .detailed-entries{width:50%;max-width:50%}
+    #ctl00_cphBody_butAddHours{background-image:none;padding-left:2.5rem}
+    .emp-login-btns input,.emp-login-btns a{display:block;width:100%;margin-bottom:20px}
+    #ctl00_cphBody_pnlAdminLogin{display:block}
+    .emp-login-btns .btn-secondary.ml-2{margin-left:0!important}
+    #ctl00_cphBody_pnlMarketing a.btn.btn-lg.d-block.mt-4{padding:0}
+    .alert-mobile{border-bottom:1px solid #f3f3f3;padding:9px;color:#70c4be;font-size:14px}
+    .hideMobile{display:none}
+    .remaining-time-title {border-radius: 0 10px 0 0}
+    nav.main-navigation {padding:1rem 1.2rem}
+    .header-shrink nav.main-navigation {padding:1rem 1.2rem}
+	.header-shrink .secondary-header-wrap{margin-top:25px}
+	#secondary-navigation .nav-link{padding:15px}
+	.offcanvas-collapse{position:fixed;top:85px;bottom:0;right:100%;width:100%;padding-right:1rem;padding-left:1rem;overflow-y:auto;visibility:hidden;background-color:#fff;transition-timing-function:ease-in-out;transition-duration:.3s;transition-property:right,visibility}
+	.offcanvas-collapse.open{right:0;visibility:visible}
+	.dropdown .user-dropdown{display:inline-block;box-shadow:none;width:100%;padding:0}
+    .user-dropdown ul li a.btn.btn-sm {padding: 1.2rem 1.5rem;border-radius: 2.6rem;font-size:1.3rem}
+	#dropdownMenuButton{display:none}
+	.user-dropdown {padding-bottom:20px!important}
+	.nav-link, .user-dropdown {font-size:1.3rem}
+	.nav-link {border-bottom:1px solid #f3f3f3}
+    #main {margin-top:85px}
+}
+
+@media screen and (max-width:850px) {
+}
+
+@media screen and (max-width:767px) {
+    h1,.h1{font-size:2rem}
+    h2,.h2{font-size:1.6rem}
+    .padding-120, .padding-100 {padding:50px 0}
+    .display-4{font-size:2.1rem;line-height:2.4rem!important;margin-bottom:0}
+    .pre-footer-wrap{padding:50px 0 60px}
+    .available-on .col{padding:0}
+    .copyright{text-align:center;order:2;}
+    .made-with-love{margin:0 auto 6px;order:1;}
+    .footer-extras{text-align:center!important;padding:10px 0px 40px;}
+    .footer-extras ul li a {padding: 0 20px;font-size: 1.3rem;font-weight:500;}
+    .footer-navigation .col{max-width:50%;width:100%;margin-bottom:0!important;flex:0 0 100%}
+    #back-to-top{bottom:-65px;right:20px;width:45px;height:45px;line-height:53px}
+    #back-to-top.visible{bottom:20px}
+    .footer-navigation h5{position:relative;cursor:pointer;border-bottom:1px solid #f3f3f3;padding:18px 20px;margin:0;font-weight: 500;font-size: 1.3rem;}
+    .footer-navigation h5.open{color:#8b8b8b}
+    .footer-navigation h5:after {position:absolute;opacity:0.5;line-height:1;right:20px;top:17px;width:14px;height:8px;content: url("../AppImages/arrow-down-m.svg")}
+    .footer-navigation h5:hover{color:#8b8b8b}
+    .footer-navigation h5.open:hover{color:#8b8b8b}
+    .footer-contact-title.open:after,.footer-product-title.open:after,.footer-company-title.open:after,.footer-support-title.open:after,.footer-resources-title.open:after{opacity:1;transform:rotateX(180deg);top:34px}
+    .footer-navigation ul{margin:0;padding:0 30px;list-style:none;height:0;overflow:hidden}
+    .footer-navigation ul.open{height:100%;overflow:hidden}
+    .footer-navigation ul li{border-bottom:1px solid #f3f3f3}
+    .footer-navigation ul li a{padding:15px 0;font-size:1.1rem}
+    /* Employee Dashboard */
+    .add-btns{text-align:left!important;justify-content:flex-start!important;margin-top:20px}
+    .schedule-emp-toggle{justify-content:center!important;margin-top:20px}
+    .pto-req-btn{margin-bottom:30px;text-align:left!important}
+    .pto-h1-title{margin-bottom:20px!important}
+    .padding-60{padding:30px 0}
+    .pto-req-hours{width:inherit!important}
+    .pto-req-day{width:67px}
+    .pto-req-date{width:105px!important}
+    .punch-in-box {padding: 30px}
+}
+
+@media screen and (max-width:575px) {
+    .available-on .item-wrap{justify-content:left}
+    .available-on .col{width:50%;max-width:50%;flex:0 0 100%!important;margin:10px 0!important;padding:0 0 0 20px}
+    .available-browser{width:30px;height:26px}
+    .available-tablet{width:26px;height:31px}
+    .available-mobile{width:19px;height:31px;margin-right:12px}
+    .available-play{width:26px;height:28px}
+    .available-apple{width:25px;height:31px;margin-right:6px}
+    .footer-navigation .col{width:100%;max-width:100%;flex:0 0 100%!important}
+    .social-btns a{margin-right:0!important}
+    .footer-navigation{padding-bottom:35px!important;padding-top:35px!important}
+    .pre-footer-wrap .item-text span {display:none}
+    .padding-lr-100{padding:0 20px}
+    /* Employee Dashboard */
+    .punch-info .col-12.border-right {border-right: 0px !important}
+    .punch-info .left-wrap {margin: 0 !important;padding: 30px !important}
+    .punch-info .right-wrap {margin: 0 !important;padding: 30px !important;border-top: 1px solid #f3f3f3}
+    .add-btns .btn.btn-lg{padding:.75rem 2rem;width:100%}
+    .table thead tr th{color:#8b8b8b;padding:1.3rem 1rem}
+    .table thead tr td{padding:1.3rem 1rem!important}
+    #ctl00_cphBody_butCancel.btn-lg,#ctl00_cphBody_butDelete,#ctl00_cphBody_butCancel{padding-left:2.5rem;width:100%;background-image:none;margin-top:10px}
+    #ctl00_cphBody_butSave.btn-lg{padding-left:2.5rem;background-image:none;width:100%}
+    #ctl00_cphBody_butSave{background-image:none;padding-left:2.5rem;width:100%}
+    #ctl00_cphBody_butPDF{background-image:none;padding-left:2.5rem}
+    .my-timecard #lstPunchLog tr td{padding:.35rem 1rem!important}
+    .detailed-info-wrap{padding:0 20px 10px!important}
+    #ctl00_cphBody_butDelete.btn-lg {padding-left: 2.5rem}
+    .btn-sm, .btn-group-sm > .btn {padding: 0.75rem 2.5rem;font-size: 18px;border-radius:2rem}
+    #hoursOptionButton {display:block}
+}
+
+@media screen and (max-width:415px) {
+    /* Employee Dashboard */
+    .add-btns .btn.btn-lg{padding:.5rem 1.3rem;font-size:1rem}
+    #ctl00_cphBody_butPDF,#ctl00_cphBody_butAddHours{background-position:23px 14px;background-size:16px;padding:.5rem 1.3rem!important}
+    .pto-requests-tr td,.pto-mid,.pto-top{font-size:.9rem}
+}

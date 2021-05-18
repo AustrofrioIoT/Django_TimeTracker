@@ -1,0 +1,67 @@
+{% extends "bases/base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-lg-10 col-xl-7 m-auto text-center">
+            <h1 class="my-3 my-lg-4 py-2">Employee Information</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-10 col-xl-7 m-auto">
+        	<form id="myform" method="post" >
+	            {% csrf_token %}
+	            <div class="form shadow-sm bg-white rounded p-3 p-lg-4">
+	                <div class="form-group row mt-3">
+	                    <div class="col-12 col-sm-7">
+	                        <label for="id_user" class="mb-2">User</label>
+	                        {{ form.user }}
+	                    </div>
+	                    <div class="col-12 col-sm-5 mt-3 mt-sm-0">
+	                        <label for="id_type_of_employee">Type of User</label>
+	                        {{ form.type_of_employee }}
+	                    </div>
+	                </div>
+
+	                <div class="form-group row mt-3">
+	                    <label for="" class="col-sm-3 col-form-label mb-2 mb-sm-0">Department</label>
+	                    <div class="col-sm-9">
+	                        {{ form.department }}
+	                    </div>
+	                </div>
+
+	                <div class="form-group row">
+	                    <label for="" class="col-sm-3 col-form-label mb-2 mb-sm-0">Role</label>
+	                    <div class="col-sm-9">
+	                        {{ form.role }}
+	                    </div>
+	                </div>
+
+	                <div class="form-group row">
+	                    <label for="" class="col-sm-3 col-form-label mb-2 mb-sm-0">Date Hired</label>
+	                    <div class="col-sm-9">
+	                        {{ form.date_hired }}
+	                    </div>
+	                </div>
+
+	                <div class="form-group row">
+	                    <label for="" class="col-sm-3 col-form-label mb-2 mb-sm-0">Observations</label>
+	                    <div class="col-sm-9">
+	                        {{ form.observations }}
+	                    </div>
+	                </div>
+
+	                <div class="row">
+	                    <div class="col-12 text-center mt-2">
+	                        <a onclick="document.getElementById('myform').submit()" class="btn btn-primary btn-lg mb-0 mt-lg-0">Save</a>
+							<a href="{{ request.META.HTTP_REFERER }}" class="btn btn-lg btn-danger mb-0 mt-lg-0">Cancel</a>
+	                    </div>
+	                </div>
+	            </div>
+	        </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

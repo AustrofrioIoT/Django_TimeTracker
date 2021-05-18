@@ -1,0 +1,67 @@
+{% extends 'bases/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="employee-dash my-timecard">
+    <div class="container employee-dash-wrap">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="mt-0 mb-4 mb-md-4 mb-xl-5">Your Timesheet today</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-8 col-lg-6 m-auto pt-3 pt-md-3 pt-lg-4 pt-xl-5 your-time-notices text-center">
+            </div>
+        </div>
+
+        <!-- Sheet table -->
+        <div class="row">
+            <div class="col-12">
+                <div class="rounded bg-white shadow-sm">
+                    <div class="table-responsive">
+                        <table class="lstContainer table table-borderless" id="lstTimeCards">
+                            <thead class="lstHead thead-light">
+                                <tr id="">
+                                    <th scope="col" >User</th>
+                                    <th scope="col" >Date</th>
+                                	<th scope="col" >Event</th>
+                                	<th scope="col" >Start</th>
+                                	<th scope="col" >End</th>
+                                	<th scope="col" >Excess/AFK Time</th>
+                                </tr>
+                            </thead>
+                        
+                            <tbody class="lstNormalItem">
+                                {% for item in object_list %}
+                                <tr id="">
+                                    <td>{{ item.owner.id }}</td>
+                                    <td>{{ item.start_datetime|date:"SHORT_DATE_FORMAT" }}</td>
+                                    <td>{{ item.event.name }}</td>
+                                    <td>{% if item.is_skipped %}Skipped
+                                        {% else %}{{ item.start_datetime|time:"H:i:s" }}{% endif %}
+                                    </td>
+                                    <td>{% if item.is_skipped %}
+                                        {% else %}{{ item.end_datetime|time:"H:i:s" }}{% endif %}
+                                    </td>
+                                    <td>{% if item.event.id == 5 %}{{ item.time_afk }}
+                                        {% else %}{{ item.time_excess }}{% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div>
+            <a  class="btn btn-primary btn-flat" href="/sheets/add/">
+                <i class="fas fa-plus"></i> Nuevo Evento
+            </a>
+        </div> -->
+    </div>
+
+</div>
+
+{% endblock content %}

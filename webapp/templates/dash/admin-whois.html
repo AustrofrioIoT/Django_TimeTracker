@@ -1,0 +1,96 @@
+{% extends 'bases/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="employee-dash my-timecard">
+    <div class="container employee-dash-wrap">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="mt-0 mb-4 mb-md-4 mb-xl-5">Your Timesheet today</h1>
+            </div>
+        </div>
+
+        <!-- Select Date -->
+        <div class="row">
+            <div class="col-12 col-sm-12">
+                <div class="row">
+                    <div class="col">
+                        <form method="GET">
+                            {{filter.form}}
+                        <div class="row">
+                            <div class="col-12 col-md-8 col-lg-6 m-auto pt-3 pt-md-3 pt-lg-4 pt-xl-3 your-time-notices text-center"></div>
+                        </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-search"></i> Search
+                            </button>
+                        </form>
+                    </div>
+
+                    <div>
+                        <a class="btn btn-md btn-primary alt-white mt-3 mt-sm-0 alt-flip" href="/dashboard/eventtime/add" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-address-card"></i> Add Event/Shift
+                        </a>
+                        <a class="btn btn-md btn-primary alt-white mt-3 mt-sm-0 alt-flip" aria-haspopup="true" aria-expanded="false" href="{% url 'webapp:export-csv' %}">
+                            <i class="fa fa-file-pdf"></i> Download Csv File
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+<!--        <div class="row">-->
+<!--            <div class="col-12 col-md-8 col-lg-6 m-auto pt-3 pt-md-3 pt-lg-4 pt-xl-5 your-time-notices text-center">-->
+<!--            </div>-->
+<!--        </div>-->
+
+        <!-- Sheet table -->
+        <div class="row mt-3 mt-lg-4">
+            <div class="col-12">
+                <div class="rounded bg-white shadow-sm">
+                    <div class="table-responsive">
+                        <table class="lstContainer table table-borderless" id="lstTimeCards">
+                            <thead class="lstHead thead-light">
+                                <tr id="">
+                                    <th scope="col" >Date</th>
+                                    <th scope="col" >User</th>
+                                	<th scope="col" >Event</th>
+                                	<th scope="col" >Start</th>
+                                	<th scope="col" >End</th>
+                                	<th scope="col" >Excess/AFK Time</th>
+                                    <th scope="col" >Options</th>
+                                </tr>
+                            </thead>
+                        
+                            <tbody class="lstNormalItem">
+                                {% for item in filter.qs %}
+                                <tr id="">
+                                    <td>{{ item.start_datetime|date:"SHORT_DATE_FORMAT" }}</td>
+                                    <td>{{ item.owner.user }}</td>
+                                    <td>{{ item.event.name }}</td>
+                                    <td>{{ item.start_datetime }}</td>
+                                    <td>{{ item.end_datetime|time:"H:i:s" }}</td>
+                                    <td>{{ item.time_excess }}</td>
+                                    <td>
+                                        <a  href="{% url 'webapp:admin-eventtime-update' item.id %}"  type="button" class="btn btn-primary p-0 rounded-circle border-0" title="Edit Event time">
+                                            <i class="fa fa-pen" style="width: 25px; height: 25px; line-height: 23px; font-size: 0.75em"></i>
+                                        </a>
+                                        <a href="{% url 'webapp:admin-eventtime-delete' item.id%}" type="button" class="ml-1 btn btn-danger p-0 rounded-circle border-0" title="Delete Event time">
+                                            <i class="fas fa-trash-alt" style="width: 25px; height: 25px; line-height: 23px; font-size: 0.8em"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+		{% include 'includes/pagination.html' %}
+    </div>
+
+</div>
+
+{% endblock content %}
