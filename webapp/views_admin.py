@@ -202,6 +202,16 @@ class EventTimeDelete(generic.DeleteView):
         context['entity'] = 'Event'
         return context
 
+def evntime(request, id):
+    event_applied = EventTime.objects.filter(Q(is_finished=0), Q(owner=id))                      
+    if len(event_applied) == 0:
+        event_send = 0
+    else:
+        for i in event_applied:
+            if i.event_id != 5:
+                event_send = i.event_id  
+    context = {'evento_apl': event_send}
+    return JsonResponse(context)
 
 class Settings(LoginRequiredMixin, generic.TemplateView):
     template_name = 'dash/settings.html'

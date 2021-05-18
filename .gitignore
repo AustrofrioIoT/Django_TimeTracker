@@ -175,3 +175,4 @@ static.back/
 media/
 media.back/
 db.sqlite3
+.vscode/settings.json
