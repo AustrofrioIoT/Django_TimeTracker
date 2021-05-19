@@ -7,6 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse_lazy, reverse
 from django.utils.decorators import method_decorator
 from django.utils.timezone import localtime, now
+from django.db.models import Q
 
 from core.models import Event, EventTime
 from core.forms import EventTimeForm, EventTimeFormUpdate
@@ -166,6 +167,10 @@ class EventTimeUpdate(generic.UpdateView):
         context['list_url'] = reverse_lazy("webapp:admin-whois")
         return context
 
+def update_event(instance):
+        instance.is_finished = True
+        instance.end_datetime = datetime.datetime.now()       
+        instance.save()
 
 class EventTimeCreate(LoginRequiredMixin, generic.CreateView):
     model = EventTime
@@ -174,8 +179,18 @@ class EventTimeCreate(LoginRequiredMixin, generic.CreateView):
     success_url = reverse_lazy("webapp:admin-whois")
 
     def post(self, request, *args, **kwargs):
+        owner_request = self.request.POST.get('owner')
+        event_request = self.request.POST.get('event')                                
+        form = self.form_class(request.POST)
         form = self.form_class(request.POST)
         if form.is_valid():
+            try:
+                event_open = EventTime.objects.filter(Q(is_finished=0), Q(owner=owner_request))
+                for i in event_open:
+                    if i.event_id != 5 and i.event_id != 1:
+                        update_event(i)                 
+            except:
+                pass
             form.save()
             return HttpResponseRedirect(self.success_url)
         self.object = None
