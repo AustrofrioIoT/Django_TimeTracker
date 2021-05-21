@@ -38,7 +38,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name_plural = 'Usuarios'
         ordering = ['-id']
 
-    def __str__(self):
+    def __str__(self):        
         return '{}, {}'.format(self.last_name, self.first_name)
 
     def get_avatar(self):

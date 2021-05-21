@@ -34,8 +34,8 @@
 	                    </div>
 	                </div>
 	                <div class="row">
-	                    <div class="col-12 text-center mt-2 mb-lg-4">
-                            <a onclick="document.getElementById('myform').submit()" class="btn btn-lg btn-primary">Save</a>
+	                    <div id="button_form" class="col-12 text-center mt-2 mb-lg-4">
+                            <a id='button_save' onclick="document.getElementById('myform').submit()" class="btn btn-lg btn-primary">Save</a>
                             <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-lg btn-danger">Cancel</a>
                         </div>
 	                </div>
@@ -119,12 +119,39 @@
 	});
 
 	function changeEvent() {
-		var x = document.getElementById("id_event");
-		var option = document.createElement("option");
-		option.text = "End Shift";
-		option.value = '6'
-		x.add(option);
-	  }		
+		var x_button = "<a onclick='button_end()'  class='btn btn-lg btn-primary'>End Shift</a>";		
+		$("#button_save").remove();
+		$('#button_form').append(x_button);		
+	}
+	function quitar(element){
+		document.body.removeChild(element);
+	}
+	function button_end(){
+		owner = $("#id_owner").val()
+		url = "/dashboard/eventtime/end_shift/" + owner
+		$.ajax({
+			url: url,
+			success: function(respuesta){
+				Swal.fire({
+					icon: respuesta.icon,
+					title: respuesta.title,
+					text: respuesta.text
+				}).then(()=>{
+					location.href="/dashboard/whois";
+				});
+			},
+			error: function(){
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: errors,
+					footer: '<a href>Why do I have this issue?</a>'
+				}).then(()=>{
+					location.reload();
+				});
+			}
+		});
+	}
 
 </script>
 {% endblock %}

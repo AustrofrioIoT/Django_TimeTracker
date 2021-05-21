@@ -66,7 +66,7 @@ class Employee(models.Model):
         ordering = ['-id', ]
 
     def __str__(self):
-        return '{}'.format(self.id, self.user.id, self.user, self.role, self.type_of_employee)
+        return '{}'.format(self.user)  #.format(self.id, self.user.id, self.user, self.role, self.type_of_employee)
 
     def get_absolute_url(self):
         return reverse('webapp:admin-employee-update', args=[str(self.id)])

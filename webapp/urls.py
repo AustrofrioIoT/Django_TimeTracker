@@ -4,6 +4,7 @@ from django.contrib.auth import views as auth_views
 from .views import *
 from .views_admin import *
 from . import views_admin
+from webapp import views
 
 urlpatterns = [
     path('', Home.as_view(), name='home'),
@@ -37,5 +38,6 @@ urlpatterns += [
     path('dashboard/eventtime/add', EventTimeCreate.as_view(), name='admin-eventtime-create'),
     path('dashboard/eventtime/update/<int:pk>', EventTimeUpdate.as_view(), name='admin-eventtime-update'),
     path('dashboard/eventtime/delete/<int:pk>', EventTimeDelete.as_view(), name='admin-eventtime-delete'),
-    path('dashboard/eventtime/prob_evnt/owner=<int:id>', views_admin.evntime, name='admin-eventtime-test')
+    path('dashboard/eventtime/prob_evnt/owner=<int:id>', views_admin.evntime, name='admin-eventtime-test'),
+    path('dashboard/eventtime/end_shift/<int:id>', views_admin.final_event, name='admin-eventtime-end_shift')
 ]

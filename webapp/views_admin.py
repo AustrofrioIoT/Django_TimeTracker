@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
+from django.http import JsonResponse, HttpResponseRedirect, HttpResponse, response
 from django.shortcuts import render
 from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
@@ -168,9 +168,20 @@ class EventTimeUpdate(generic.UpdateView):
         return context
 
 def update_event(instance):
-        instance.is_finished = True
-        instance.end_datetime = datetime.datetime.now()       
-        instance.save()
+    instance.is_finished = True
+    instance.end_datetime = datetime.now()       
+    instance.save()
+
+def final_event(request, id):
+    event_open = EventTime.objects.filter(Q(is_finished=0), Q(owner=id))
+    for i in event_open:
+        update_event(i)
+    context = {
+        'icon': 'success',
+        'title': 'Correcto',
+        'text': 'End Shift'
+        }
+    return JsonResponse(context)   
 
 class EventTimeCreate(LoginRequiredMixin, generic.CreateView):
     model = EventTime
@@ -182,15 +193,16 @@ class EventTimeCreate(LoginRequiredMixin, generic.CreateView):
         owner_request = self.request.POST.get('owner')
         event_request = self.request.POST.get('event')                                
         form = self.form_class(request.POST)
-        form = self.form_class(request.POST)
+        form = self.form_class(request.POST)        
         if form.is_valid():
             try:
                 event_open = EventTime.objects.filter(Q(is_finished=0), Q(owner=owner_request))
                 for i in event_open:
                     if i.event_id != 5 and i.event_id != 1:
-                        update_event(i)                 
-            except:
-                pass
+                        t = update_event(i)
+                        print(t)                 
+            except ValueError as err:                
+                print(str(err))
             form.save()
             return HttpResponseRedirect(self.success_url)
         self.object = None
@@ -224,7 +236,11 @@ def evntime(request, id):
     else:
         for i in event_applied:
             if i.event_id != 5:
-                event_send = i.event_id  
+                event_send = i.event_id                
+            else:
+                if len(event_applied) == 1:
+                   event_send = 5 
+
     context = {'evento_apl': event_send}
     return JsonResponse(context)
 
