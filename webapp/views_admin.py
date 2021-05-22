@@ -198,7 +198,7 @@ class EventTimeCreate(LoginRequiredMixin, generic.CreateView):
             try:
                 event_open = EventTime.objects.filter(Q(is_finished=0), Q(owner=owner_request))
                 for i in event_open:
-                    if i.event_id != 5 and i.event_id != 1:
+                    if i.event.name != "Start Shift" and i.event.name != "Afk":
                         t = update_event(i)
                         print(t)                 
             except ValueError as err:                
@@ -234,12 +234,13 @@ def evntime(request, id):
     if len(event_applied) == 0:
         event_send = 0
     else:
-        for i in event_applied:
-            if i.event_id != 5:
-                event_send = i.event_id                
+        for i in event_applied:            
+            if i.event.name != "Start Shift":
+                event_send = i.event.name
+                print("False")                                
             else:
                 if len(event_applied) == 1:
-                   event_send = 5 
+                   event_send = "Start Shift" 
 
     context = {'evento_apl': event_send}
     return JsonResponse(context)

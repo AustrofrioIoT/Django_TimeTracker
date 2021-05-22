@@ -73,34 +73,34 @@
 			url: "/dashboard/eventtime/prob_evnt/" + $("#id_owner").serialize(),
 			data: datos,
 			success: function(data){
-				if(data.evento_apl == 5){
+				if(data.evento_apl == "Start Shift"){					
 					var op = document.getElementById("id_event").getElementsByTagName("option");
-					for (var i = 0; i < op.length; i++) {  				
-  						(op[i].value.toLowerCase() == "5" || op[i].value.toLowerCase() == "3" || op[i].value.toLowerCase() == "2") 
+					for (var i = 0; i < op.length; i++) {											  				
+						(op[i].text == "Start Shift" || op[i].text == "Second Break" || op[i].text == "Lunch") 
 						? op[i].disabled = true 
     					: op[i].disabled = false ;
 					}
 				}
-				else if(data.evento_apl == 4){
+				else if(data.evento_apl ==  "First Break"){
 					var op = document.getElementById("id_event").getElementsByTagName("option");
 					for (var i = 0; i < op.length; i++) {  				
-  						(op[i].value.toLowerCase() == "5" || op[i].value.toLowerCase() == "4" || op[i].value.toLowerCase() == "2") 
+  						(op[i].text == "Start Shift" || op[i].text == "First Break" || op[i].text == "Lunch") 
 						? op[i].disabled = true 
     					: op[i].disabled = false ;
 					}
 				}
-				else if(data.evento_apl == 3){
+				else if(data.evento_apl == "Second Break"){
 					var op = document.getElementById("id_event").getElementsByTagName("option");
 					for (var i = 0; i < op.length; i++) {  				
-  						(op[i].value.toLowerCase() == "5" || op[i].value.toLowerCase() == "4" || op[i].value.toLowerCase() == "3") 
+  						(op[i].text == "Start Shift" || op[i].text == "First Break" || op[i].text == "Second Break") 
 						? op[i].disabled = true 
     					: op[i].disabled = false ;
 					}
 				}
-				else if(data.evento_apl == 2){
+				else if(data.evento_apl == "Lunch"){
 					var op = document.getElementById("id_event").getElementsByTagName("option");					
 					for (var i = 0; i < op.length; i++) {  				
-  						(op[i].value.toLowerCase() == "5" || op[i].value.toLowerCase() == "4" ||  op[i].value.toLowerCase() == "3" || op[i].value.toLowerCase() == "2") 
+  						(op[i].text == "Start Shift" || op[i].text == "First Break" ||  op[i].text == "Second Break" || op[i].text == "Lunch") 
 						? op[i].disabled = true 
     					: op[i].disabled = false ;
 					}
@@ -109,7 +109,7 @@
 				else{
 					var op = document.getElementById("id_event").getElementsByTagName("option");
 					for (var i = 0; i < op.length; i++) {  				
-  						(op[i].value.toLowerCase() == "4" || op[i].value.toLowerCase() == "3" ||  op[i].value.toLowerCase() == "2" || op[i].value.toLowerCase() == "1") 
+  						(op[i].text == "First Break" || op[i].text == "Second Break" ||  op[i].text == "Lunch" || op[i].text == "Afk") 
 						? op[i].disabled = true 
     					: op[i].disabled = false ;
 					}
