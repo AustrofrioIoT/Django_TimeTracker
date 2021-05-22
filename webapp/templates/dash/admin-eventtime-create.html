@@ -65,8 +65,9 @@
 			footer: '<a href>Why do I have this issue?</a>'
 		});
 	{% endif %}
-
+	
 	$("#id_owner").change(function(){
+		$('#id_event').removeAttr('disabled');
 		datos = $("#myform").serialize()		
 		$.ajax({
 			type: "GET",

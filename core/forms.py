@@ -5,6 +5,7 @@ from .models import Event, EventTime
 from business.models import Employee
 from tempus_dominus.widgets import DatePicker, TimePicker, DateTimePicker
 from django.utils import timezone
+from django.db.models import Q
 
 class EventForm(ModelForm):
     def __init__(self, *args, **kwargs):
@@ -46,8 +47,8 @@ class EventTimeForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['owner'].queryset = Employee.objects.filter(user__is_active=True).filter(user__is_superuser=False)
-
+        self.fields['owner'].queryset = Employee.objects.filter(user__is_active=True).filter(user__is_superuser=False)        
+        self.fields['event'].widget.attrs['disabled'] = 'disabled'
         self.fields['start_datetime'] = DateTimeField(
             widget=DateTimePicker(
                 options={
@@ -70,11 +71,14 @@ class EventTimeForm(ModelForm):
     def clean(self):
         cleaned_data = super(EventTimeForm, self).clean()
         event = cleaned_data.get('event')
-        owner = cleaned_data.get('owner')
+        owner = cleaned_data.get('owner')        
+        evento_request = Event.objects.get(name="Start Shift")
         # is_finished = cleaned_data.get('is_finished')
         start_datetime = cleaned_data.get('start_datetime')
         if EventTime.objects.filter(start_datetime__date=start_datetime).filter(event=event).filter(owner=owner).exists():
             raise forms.ValidationError("There is already an event created that day")
+        if not EventTime.objects.filter(Q(is_finished=0), Q(event=evento_request.id)).exists() and evento_request != event:
+           raise forms.ValidationError("Invalid option, You need to start the day") 
 
 
 
