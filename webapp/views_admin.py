@@ -221,7 +221,7 @@ class EventTimeCreate(LoginRequiredMixin, generic.CreateView):
 class EventTimeDelete(generic.DeleteView):
     model = EventTime
     template_name = "dash/admin-eventtime-delete.html"
-    success_url = reverse_lazy("webapp:admin-eventtime")
+    success_url = reverse_lazy("webapp:admin-whois")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
