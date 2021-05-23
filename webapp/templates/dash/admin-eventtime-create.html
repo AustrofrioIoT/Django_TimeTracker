@@ -77,7 +77,7 @@
 				if(data.evento_apl == "Start Shift"){					
 					var op = document.getElementById("id_event").getElementsByTagName("option");
 					for (var i = 0; i < op.length; i++) {											  				
-						(op[i].text == "Start Shift" || op[i].text == "Second Break" || op[i].text == "Lunch") 
+						(op[i].text == "Start Shift" || op[i].text == "Second Break" || op[i].text == "Lunch" || op[i].text == "Afk") 
 						? op[i].disabled = true 
     					: op[i].disabled = false ;
 					}
@@ -85,7 +85,7 @@
 				else if(data.evento_apl ==  "First Break"){
 					var op = document.getElementById("id_event").getElementsByTagName("option");
 					for (var i = 0; i < op.length; i++) {  				
-  						(op[i].text == "Start Shift" || op[i].text == "First Break" || op[i].text == "Lunch") 
+  						(op[i].text == "Start Shift" || op[i].text == "First Break" || op[i].text == "Lunch" || op[i].text == "Afk") 
 						? op[i].disabled = true 
     					: op[i].disabled = false ;
 					}
@@ -93,7 +93,7 @@
 				else if(data.evento_apl == "Second Break"){
 					var op = document.getElementById("id_event").getElementsByTagName("option");
 					for (var i = 0; i < op.length; i++) {  				
-  						(op[i].text == "Start Shift" || op[i].text == "First Break" || op[i].text == "Second Break") 
+  						(op[i].text == "Start Shift" || op[i].text == "First Break" || op[i].text == "Second Break" || op[i].text == "Afk") 
 						? op[i].disabled = true 
     					: op[i].disabled = false ;
 					}
@@ -101,7 +101,7 @@
 				else if(data.evento_apl == "Lunch"){
 					var op = document.getElementById("id_event").getElementsByTagName("option");					
 					for (var i = 0; i < op.length; i++) {  				
-  						(op[i].text == "Start Shift" || op[i].text == "First Break" ||  op[i].text == "Second Break" || op[i].text == "Lunch") 
+  						(op[i].text == "Start Shift" || op[i].text == "First Break" ||  op[i].text == "Second Break" || op[i].text == "Lunch" || op[i].text == "Afk") 
 						? op[i].disabled = true 
     					: op[i].disabled = false ;
 					}
