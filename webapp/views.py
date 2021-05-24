@@ -45,11 +45,11 @@ class Home(LoginRequiredMixin, generic.TemplateView):
                                                             event=5).first()
 
         else:
-            context['events_today'] = EventTime.objects.all()
+            context['events_today'] = EventTime.objects.all()[:6]
             context['employees'] = Employee.objects.filter(user__is_active=True,
-                                                           type_of_employee__type_employee="Employee")
+                                                           type_of_employee__type_employee="Employee")[:5]
             context['managers'] = Employee.objects.filter(user__is_active=True,
-                                                          type_of_employee__type_employee="Manager")
+                                                          type_of_employee__type_employee="Manager")[:5]
         # print(context)
         return context
 

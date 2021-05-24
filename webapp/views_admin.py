@@ -31,7 +31,7 @@ class Dashboard(LoginRequiredMixin, generic.TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['events_today'] = EventTime.objects.all()[:5]
+        context['events_today'] = EventTime.objects.all()[:6]
         context['employees'] = Employee.objects.filter(user__is_staff=False).filter(user__is_active=True).filter(
             type_of_employee__type_employee="Employee")[:5]
         context['managers'] = Employee.objects.filter(user__is_staff=False).filter(user__is_active=True).filter(
