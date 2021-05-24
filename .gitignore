@@ -4,8 +4,8 @@
 *.pot
 *.pyc
 local_settings.py
-db.sqlite3
-db.sqlite3-journal
+#db.sqlite3
+#db.sqlite3-journal
 media
 migrations
 ### Django.Python Stack ###
@@ -97,8 +97,8 @@ coverage.xml
 # Django stuff:
 *.log
 local_settings.py
-db.sqlite3
-db.sqlite3-journal
+#db.sqlite3
+#db.sqlite3-journal
 
 # Flask stuff:
 instance/
@@ -174,5 +174,5 @@ static.back/
 # media files
 media/
 media.back/
-db.sqlite3
+#db.sqlite3
 .vscode/settings.json
